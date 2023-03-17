@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp63TestSolution16._3._2023
+﻿namespace ConsoleApp63TestSolution16._3._2023
 {
   public class AllNumbers
   {

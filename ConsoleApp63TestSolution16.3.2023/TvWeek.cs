@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp63TestSolution16._3._2023
+﻿namespace ConsoleApp63TestSolution16._3._2023
 {
   /// <summary>
   /// סעיף ב' כותרת המחלקה
   /// </summary>
   public class TvWeek
   {
-    // (מאד לא מקובל להגדיר את המערך כתכונה (ראו בסוף הקוד
-    // החצנתו כתכונה היא לכל הפחות מוזרה.
-    // 'שתי השורות להלן הן ה"תשובה" לסעיף ב  
-    private TvProgram[] arrProg;
-    // !!! Setter שאסור לכתוב עבורו  current אותו הדבר לגבי השדה 
-    // בבחינות הבגרות משתמשים במונח תכונה גם עבור השדה, וצריך להתרגל לטעות הזו
-    // שתחזור על עצמה באופן סיסטמטי
+    /// <summary>
+    /// (מאד לא מקובל להגדיר את המערך כתכונה (ראו בסוף הקוד
+    /// החצנתו כתכונה היא לכל הפחות מוזרה.
+    /// 'שתי השורות להלן הן ה"תשובה" לסעיף ב  
+    /// </summary>
+    private TvProgram[] arrProg; // אין צורך לאתחל אותו באורך 100 אבל זה מותר
+    /// <summary>
+    /// !!! Setter שאסור לכתוב עבורו  current אותו הדבר לגבי השדה 
+    /// בבחינות הבגרות משתמשים במונח תכונה גם עבור השדה, וצריך להתרגל לטעות הזו
+    /// שתחזור על עצמה באופן סיסטמטי
+    /// </summary>
     private int current;
 
     /// <summary>
-    /// 'סעיף ג
+    /// סעיף ג
     /// מוסיף תוכנית למערך במקום הפנוי הבא
     /// </summary>
     /// <param name="prog">התכנית אותה יש להוסיף</param>
@@ -29,21 +27,32 @@ namespace ConsoleApp63TestSolution16._3._2023
     {
       arrProg[current++] = prog;
     }
+
     /// <summary>
-    /// 'סעיף ד
+    /// סעיף ד:
+    /// 3 אלטרנטיבות
     /// </summary>
     /// <returns>returns the number of programs currently in arrProg</returns>
     public int GetNumSportProgs()
     {
       int res = 0;
       foreach (TvProgram p in arrProg)
-        if (p.GetIsSport())
+        if (p is not null && p.GetIsSport())
           res += 1;
       return res;
     }
 
+    public int GetNumSportProgs2() // alternative.
+    {
+      int res = 0;
+      for (int i = 0; i < current; i++) // null-יבטיח שלא נגיע להפניות ל current
+        if (arrProg[i].GetIsSport())
+          res ++;
+      return res;
+    }
 
-    #region ==הקוד שלהלן אינו מקובל, אך גם לא נדרש בשאלה ==התכונות
+
+    #region ==הקוד שכאן אינו מקובל, אך גם לא נדרש בשאלה ==התכונות
     /// <summary>
     ///  getter of arrProg - מוזר
     /// </summary>

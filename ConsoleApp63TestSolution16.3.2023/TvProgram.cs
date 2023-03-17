@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp63TestSolution16._3._2023
+﻿namespace ConsoleApp63TestSolution16._3._2023
 {
   /// <summary>
   /// שאלה 3 סעיף א
   /// </summary>
   public class TvProgram
   {
-    //אין צורך להגדיר את השדות
+    #region שדות/תכונות: אין צורך להגדיר אותם
     private int code;
     private int day;
     private bool isSport;
+    #endregion
     public TvProgram() // מומלץ מאד לדאוג שתהיה גם פעולה בונה ללא פרמטים
     {
       //פעולה כזו יכול להכיל איתחולים או להיות ריקה
@@ -25,7 +20,7 @@ namespace ConsoleApp63TestSolution16._3._2023
       this.day = day;
       this.isSport = isSport;
     }
-    #region אין צורך לכתוב
+    #region GetIsSport  אין צורך לכתוב את 
     internal bool GetIsSport()
     {
       throw new NotImplementedException();
