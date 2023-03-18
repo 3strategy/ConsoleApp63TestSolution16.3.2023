@@ -27,6 +27,13 @@
     {
       arrProg[current++] = prog;
     }
+    /// <summary>
+    /// סעיף ג
+    /// אפשרי גם בשורה אחת. אבל להיזהר עם זה אם אתם לא בטוחים
+    /// </summary>
+    /// <param name="prog"></param>
+    public void AddProgram2(TvProgram prog) => arrProg[current++] = prog;
+    
 
     /// <summary>
     /// סעיף ד:

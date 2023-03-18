@@ -28,5 +28,7 @@
     {
       return this.price == other.price;
     }
+
+    public bool IsSamePrice2(Pen other) => price == other.price;
   }
 }

@@ -19,10 +19,22 @@
     #endregion
 
     /// <summary>
-    /// forr מימוש בלולאה לאחור 
+    ///  foreach מימוש
     /// </summary>
     /// <returns></returns>
-    public int LastOddValue()
+    public int LastOddValue4()
+    {
+      int value = 0;
+      foreach (var item in arrayNum)
+        if (item % 2 != 0)
+          value = item;
+      return value;
+    }
+      /// <summary>
+      /// forr מימוש בלולאה לאחור 
+      /// </summary>
+      /// <returns></returns>
+      public int LastOddValue()
     {
       for (int i = arrayNum.Length - 1; i >= 0; i--)
         if (arrayNum[i] % 2 == 1)
@@ -53,6 +65,7 @@
           res = i;
       return arrayNum[res];
     }
+    
 
 
   }

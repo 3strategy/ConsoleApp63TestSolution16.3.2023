@@ -12,11 +12,22 @@ namespace ConsoleApp63TestSolution16._3._2023
     #region בדיקת שאלה 1: בבחינה אין צורך בקריאה לפעולות כשלא ביקשו
     public static void Main(string[] args)
     {
-      MainQ5(); // קריאה לשאלה 5. בבחינה לא צריך
-      MainQ1();
+      //MainQ5(); // קריאה לשאלה 5. בבחינה לא צריך
+      Random rnd = new Random();
+      int[] arr = new int[300];
+      for (int j = 0; j < 3; j++)
+      {
+        for (int i = 0; i < arr.Length; i++)
+          arr[i] = rnd.Next(1, 6);
+        int a = MainQ52(arr); // בדיקה משווה בין פתרונות
+        int b = MainQ53(arr);
+        Debug.Assert(a == b);
+      }
+
+      //MainQ1();
     }
     public static void MainQ1()
-    { 
+    {
       AllNumbers all = new AllNumbers();
       Console.WriteLine(all.LastOddValue() + " " + all.LastOddValue2() + " " + all.LastOddValue3());
       Debug.Assert(all.LastOddValue() == all.LastOddValue2());
@@ -24,8 +35,11 @@ namespace ConsoleApp63TestSolution16._3._2023
     }
     #endregion
 
+    /// <summary>
+    /// פתרון רשמי שאלה 5
+    /// </summary>
     public static void MainQ5()
-    { 
+    {
       // שאלה 5 מערך מונים
       int[] ratings = new int[6];// הערכים האפשריים ועוד 1 כדי שיהיה פשוט יותר
       int maxInd = 0;
@@ -33,14 +47,53 @@ namespace ConsoleApp63TestSolution16._3._2023
       {
         Console.WriteLine("enter your rating 1-5");
         int n = int.Parse(Console.ReadLine()); // בבחינה לרשום קלוט מספר שלם 
-        if (n > 5 || n < 1)
-          continue;// לא נדרש אבל רצוי. קופץ לסיבוב הבא. לא למדנו ולא בחומר
         ratings[n]++;
       }
       for (int i = 0; i < ratings.Length; i++)
         if (ratings[i] > ratings[maxInd]) // ניתן היה גם לשים את התנאי בתוך הלולאה הקודמת
           maxInd = i;
       Console.WriteLine("the most frequent rating was: " + maxInd);
+    }
+
+    /// <summary>
+    /// (פתרון מקוצר לשאלה 5. מוצג לשם נוחות עם מערך (במקום קלט 
+    /// ומחזיר ערך במקום להדפיס
+    /// </summary>
+    /// <param name="arr"></param>
+    /// <returns></returns>
+    public static int MainQ52(int[] arr)
+    {
+      int[] ratings = new int[6];// הערכים האפשריים ועוד 1 כדי שיהיה פשוט יותר
+      int maxInd = 0;
+
+      for (int i = 0; i < arr.Length; i++)
+        if (++ratings[arr[i]] > ratings[maxInd])
+          maxInd = arr[i];
+      return maxInd;
+    }
+
+    public static int MainQ53(int[] arr)
+    {
+      // דוגמא לפתרון ללא מונים. עובד אבל איטי בהרבה
+      int maxRate = 0, rateAmount = 0;
+      for (int i = 0; i < arr.Length; i++)
+      {
+        int count = 0;
+        foreach (var item in arr)
+        {
+          if (arr[i] == item)
+          {
+            count++;
+            if (count > rateAmount)
+            {
+              rateAmount = count;
+              maxRate = item;
+            }
+          }
+        }
+      }
+      //Console.WriteLine($"the most rated are {maxRate} rated#  {rateAmount}");
+      return maxRate;
     }
   }
 }
